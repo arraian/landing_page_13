@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Realistic Wavy Curtains - Premium</title>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:300,700|Cinzel:400,700,900" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  .curtain-wrapper {
+    position: fixed;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    width: 80vw;
+    height: 70vh;
+    background: radial-gradient(circle at 30% 30%, #1c1f35, #0d121c);
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 10px 60px rgba(0,0,0,0.7), inset 0 0 50px rgba(255,255,255,0.05);
+    z-index:1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1000px;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 28px;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 700;
+    z-index: 100;
+    transition: .3s ease;
+    opacity:0.8;
+  }
+  .close-btn:hover { color:#ff4c4c; transform: scale(1.2) rotate(15deg); }
+
+  .curtain {
+    position: absolute;
+    top:0;
+    width:50%;
+    height:100%;
+    background: linear-gradient(145deg,#900020 10%,#500010 90%);
+    box-shadow: inset -25px 0 50px rgba(0,0,0,0.8),
+                inset 10px 0 25px rgba(255,255,255,0.05);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    z-index:2;
+    transform: translateX(0);
+    transition: transform 3s cubic-bezier(.65,.05,.36,1);
+  }
+  .left-curtain { left:0; clip-path: polygon(0 0, 95% 0, 100% 100%, 0% 100%); }
+  .right-curtain { right:0; clip-path: polygon(5% 0, 100% 0, 100% 100%, 0% 100%); }
+
+  .curtain::before {
+    content:"";
+    position:absolute;
+    inset:0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(0,0,0,0.08));
+    animation: wave 4s ease-in-out infinite alternate;
+  }
+
+  @keyframes wave {
+    0% { transform: translateX(0) skewX(0deg); }
+    50% { transform: translateX(5%) skewX(2deg); }
+    100% { transform: translateX(0) skewX(0deg); }
+  }
+
+  .message {
+    /* position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-60%);
+    text-align:center;
+    
+    z-index:3;
+    pointer-events:none; */
+    opacity:0;
+    animation: fadeIn 2s ease 3s forwards;
+    text-align: center;
+  }
+
+  .message h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 40px;
+    /* font-size: clamp(42px, 7vw, 80px); */
+    font-weight:900;
+    background: linear-gradient(135deg, #ffd700, #ffffff, #8aa3ff, #ff69b4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 
+        0 0 20px rgba(255,255,255,0.9),
+        0 0 45px rgba(255,215,0,0.7),
+        0 0 90px rgba(138,163,255,0.6);
+    letter-spacing: 4px;
+    text-align: center;
+  }
+
+  .message p {
+    margin-top:14px;
+    font-size: 22px;
+    font-family: 'Montserrat', sans-serif;
+    color: #d0d8ff;
+    text-shadow: 0 0 10px rgba(255,255,255,0.2);
+    font-weight:500;
+    letter-spacing:1px;
+  }
+
+  /* BUTTON */
+  .action-btn {
+    margin-top: 50px;
+    padding: 14px 36px;
+    background: linear-gradient(135deg, #ffd700, #ffb400);
+    color: #000;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 25px rgba(255,215,0,0.6);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: .6s ease;
+  }
+  .action-btn:hover {
+    background: linear-gradient(135deg, #ffe15d, #ffca28);
+    box-shadow: 0 0 35px rgba(255,215,0,0.85);
+    transform: translateY(10px);
+  }
+
+  .btn-reveal { opacity:1 !important; transform: translateY(0) !important; }
+
+  @keyframes fadeIn { to { opacity:1; } }
+
+  canvas.confetti {
+    position:absolute;
+    inset:0;
+    z-index:10;
+    pointer-events:none;
+  }
+</style>
+</head>
+<body>
+
+<div class="curtain-wrapper" id="curtainBox">
+  <div class="close-btn" onclick="closeCurtain()">✕</div>
+
+  <div class="curtain left-curtain" id="leftCurtain"></div>
+  <div class="curtain right-curtain" id="rightCurtain"></div>
+
+  <div class="message">
+    <h1>✨ Thirteen Years of Triumph ✨</h1>
+    <p>Crafting milestones, shaping excellence, and defining a legacy that inspires.</p>
+
+    <a href="landing.html" class="action-btn" id="actionBtn" onclick="closeCurtain()">
+      Enter Celebration
+    </a>
+  </div>
+
+  <canvas class="confetti" id="confettiCanvas"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+<script>
+const leftCurtain = document.getElementById('leftCurtain');
+const rightCurtain = document.getElementById('rightCurtain');
+const confettiCanvas = document.getElementById('confettiCanvas');
+const actionBtn = document.getElementById('actionBtn');
+
+confettiCanvas.width = window.innerWidth;
+confettiCanvas.height = window.innerHeight;
+
+function openCurtains() {
+  leftCurtain.style.transform = 'translateX(-150%)';
+  rightCurtain.style.transform = 'translateX(150%)';
+
+  setTimeout(()=>{ launchConfetti(); }, 3000);
+
+  setTimeout(()=>{ 
+    actionBtn.classList.add("btn-reveal");
+  }, 3400);
+}
+
+function closeCurtain() {
+  document.getElementById('curtainBox').remove();
+}
+
+function launchConfetti() {
+  const colors = ['#ffffff','#8aa3ff','#000000','#ffd700'];
+  const duration = 2500;
+  const end = Date.now() + duration;
+
+  (function frame(){
+    confetti({
+      particleCount:5,
+      startVelocity:45,
+      spread:70,
+      origin:{x:0.5,y:0.5},
+      colors:colors,
+      gravity:0.6
+    });
+    if(Date.now() < end) requestAnimationFrame(frame);
+  })();
+}
+
+window.onload = ()=> { setTimeout(()=>{openCurtains();}, 500); }
+</script>
+</body>
+</html>
