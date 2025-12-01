@@ -1,540 +1,715 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iHelpBD 13th Anniversary :: 2012-2025</title>
     <meta name="description" content="A light-themed, retro celebration of iHelpBD’s 13-year journey.">
     <!-- Font for retro titles (VT323) and modern readability (Inter) -->
-    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-   <style>
-    /* --- 1. Global Variables & Fonts --- */
-    :root {
-        --color-light-bg: #FFFBEB; /* Soft Cream/Paper White */
-        --color-card-bg: #FFFFFF; /* Bright White */
-        --color-dark-text: #2C3E50; /* Dark Slate Blue/Navy */
-        --color-accent-teal: #00A896; /* Retro Teal/Aqua */
-        --color-accent-red: #E74C3C; /* Bold Secondary Accent */
-        --border-width: 4px;
-        --border-radius-sm: 8px;
-        --transition-speed: 0.3s;
-    }
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Inter:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
-    body {
-        font-family: 'Inter', sans-serif;
-        background-color: var(--color-light-bg);
-        color: var(--color-dark-text);
-        line-height: 1.6;
-        margin: 0;
-        padding: 0;
-        scroll-behavior: smooth;
-        overflow-x: hidden;
-        /* Subtle scanline effect for retro feel */
-        background-image: repeating-linear-gradient(
-            0deg, 
-            rgba(0, 0, 0, 0.03), 
-            rgba(0, 0, 0, 0.03) 1px, 
-            transparent 1px, 
-            transparent 2px
-        );
-    }
+    <style>
+        /* --- 1. Global Variables & Fonts --- */
+        :root {
+            --color-light-bg: #fff;
+            /* Soft Cream/Paper White */
+            --color-card-bg: #FFFBEB;
+            /* Bright White */
+            --color-dark-text: navy;
+            /* Dark Slate Blue/Navy */
+            --color-accent-teal: tomato;
+            /* Retro Teal/Aqua */
+            --color-accent-red: #E74C3C;
+            /* Bold Secondary Accent */
+            --border-width: 4px;
+            --border-radius-sm: 8px;
+            --transition-speed: 0.3s;
+        }
 
-    /* --- 2. Layout & Base Typography --- */
-    .container {
-        width: 90%;
-        margin: 0 auto;
-        padding: 0 1rem;
-    }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-light-bg);
+            color: var(--color-dark-text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            /* Subtle scanline effect for retro feel */
+            background-image: repeating-linear-gradient(0deg,
+                    rgba(0, 0, 0, 0.03),
+                    rgba(0, 0, 0, 0.03) 1px,
+                    transparent 1px,
+                    transparent 2px);
+        }
 
-    section {
-        padding: clamp(3rem, 8vh, 6rem) 0;
-        position: relative;
-        z-index: 10;
-    }
+        /* --- 2. Layout & Base Typography --- */
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
 
-    h1, h2, h3 {
-        font-family: 'VT323', monospace;
-        text-transform: uppercase;
-        letter-spacing: 0.2em; /* Exaggerated spacing for retro look */
-        font-weight: 400;
-    }
+        section {
+            padding: clamp(3rem, 8vh, 6rem) 0;
+            position: relative;
+            z-index: 10;
+        }
 
-    h2 {
-        font-size: clamp(2rem, 5vw, 4rem);
-        text-align: center;
-        margin-bottom: 3rem;
-        color: var(--color-dark-text);
-        text-shadow: 2px 2px 0 var(--color-accent-teal);
-    }
+        h1,
+        h2,
+        h3 {
+            font-family: 'VT323', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            /* Exaggerated spacing for retro look */
+            font-weight: 400;
+        }
 
-    .accent-teal {
-        color: var(--color-accent-teal);
-        font-weight: 700;
-        text-shadow: none;
-    }
+        h2 {
+            font-size: clamp(2rem, 5vw, 4rem);
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--color-dark-text);
+            text-shadow: 2px 2px 0 var(--color-accent-teal);
+        }
 
-    /* --- 3. UI Components: Buttons and Cards --- */
-    .card-base {
-        background-color: var(--color-card-bg);
-        border: var(--border-width) solid var(--color-dark-text);
-        border-radius: var(--border-radius-sm);
-        box-shadow: var(--border-width) var(--border-width) 0 0 rgba(0, 0, 0, 0.2);
-        transition: all var(--transition-speed) ease;
-    }
+        .accent-teal {
+            color: var(--color-accent-teal);
+            font-weight: 700;
+            text-shadow: none;
+        }
 
-    .card-base:hover {
-        box-shadow: var(--border-width) var(--border-width) 0 0 var(--color-accent-teal);
-        transform: translate(-2px, -2px);
-    }
+        /* --- 3. UI Components: Buttons and Cards --- */
+        .card-base {
+            background-color: var(--color-card-bg);
+            border: var(--border-width) solid var(--color-dark-text);
+            border-radius: var(--border-radius-sm);
+            box-shadow: var(--border-width) var(--border-width) 0 0 rgba(0, 0, 0, 0.2);
+            transition: all var(--transition-speed) ease;
+        }
 
-    .button-retro {
-        display: inline-flex;
-        align-items: center;
-        padding: 0.8rem 2rem;
-        font-family: 'VT323', monospace;
-        font-size: 1.2rem;
-        letter-spacing: 0.1em;
-        text-decoration: none;
-        transition: all 0.1s linear;
-        cursor: pointer;
-        text-transform: uppercase;
-        border-radius: 0;
-        border: var(--border-width) solid var(--color-dark-text);
-        position: relative;
-    }
+        .card-base:hover {
+            box-shadow: var(--border-width) var(--border-width) 0 0 var(--color-accent-teal);
+            transform: translate(-2px, -2px);
+        }
 
-    .btn-teal {
-        background: var(--color-accent-teal);
-        color: var(--color-dark-text);
-        box-shadow: 4px 4px 0 0 var(--color-dark-text);
-    }
+        .button-retro {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.8rem 2rem;
+            font-family: 'VT323', monospace;
+            font-size: 1.2rem;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            transition: all 0.1s linear;
+            cursor: pointer;
+            text-transform: uppercase;
+            border-radius: 0;
+            border: var(--border-width) solid var(--color-dark-text);
+            position: relative;
+        }
 
-    .btn-teal:hover {
-        background: #008f7e;
-        box-shadow: 2px 2px 0 0 var(--color-dark-text);
-        transform: translate(2px, 2px);
-    }
+        .btn-teal {
+            background: var(--color-accent-teal);
+            color: var(--color-dark-text);
+            box-shadow: 4px 4px 0 0 var(--color-dark-text);
+        }
 
-    .btn-outline {
-        background: var(--color-card-bg);
-        color: var(--color-accent-red);
-        border-color: var(--color-accent-red);
-        box-shadow: 4px 4px 0 0 var(--color-dark-text);
-    }
+        .btn-teal:hover {
+            background: #008f7e;
+            box-shadow: 2px 2px 0 0 var(--color-dark-text);
+            transform: translate(2px, 2px);
+        }
 
-    .btn-outline:hover {
-        background: #ffe3e3;
-        color: var(--color-dark-text);
-        box-shadow: 2px 2px 0 0 var(--color-dark-text);
-        transform: translate(2px, 2px);
-    }
+        .btn-outline {
+            background: var(--color-card-bg);
+            color: var(--color-accent-red);
+            border-color: var(--color-accent-red);
+            box-shadow: 4px 4px 0 0 var(--color-dark-text);
+        }
 
-    /* --- 4. HERO SECTION (RETRO V3) --- */
-    #hero {
-        min-height: 80vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        background-color: var(--color-light-bg);
-        padding: 0;
-        position: relative;
-        overflow: hidden;
-    }
+        .btn-outline:hover {
+            background: #ffe3e3;
+            color: var(--color-dark-text);
+            box-shadow: 2px 2px 0 0 var(--color-dark-text);
+            transform: translate(2px, 2px);
+        }
 
-    #hero header {
-        padding: 1rem;
-        margin-top: 1rem;
-        max-width: 90%;
-        margin-left: auto;
-        margin-right: auto;
-    }
+        /* --- 4. HERO SECTION (RETRO V3) --- */
+        #hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-color: var(--color-light-bg);
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+            z-index: 20;
+        }
 
-    #hero .anniversary-label {
-        font-size: 1rem;
-        font-family: 'VT323', monospace;
-        letter-spacing: 0.4em; 
-        text-transform: uppercase;
-        color: var(--color-accent-red);
-        margin-bottom: 2rem;
-        display: inline-block;
-        padding: 0.5rem 1rem;
-        border: var(--border-width) solid var(--color-accent-red);
-        background: #ffe3e3;
-    }
+        #hero header {
+            padding: 1rem;
+            margin-top: 1rem;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
 
-    #hero h1 {
-        font-size: clamp(3rem, 10vw, 7rem); 
-        margin-bottom: 0.5rem;
-        line-height: 0.9;
-        color: var(--color-dark-text);
-        text-shadow: 4px 4px 0 var(--color-accent-teal);
-        word-break: break-word;
-    }
+        }
 
-    #hero h3 {
-        font-size: clamp(1rem, 2.5vw, 1.8rem);
-        color: var(--color-dark-text); 
-        margin-top: 1.5rem;
-        margin-bottom: 3rem;
-        max-width: 800px;
-        margin-left: auto;
-        margin-right: auto;
-        font-family: 'Inter', sans-serif;
-        font-weight: 700;
-        letter-spacing: normal;
-    }
+        #hero .anniversary-label {
+            font-size: 1rem;
+            font-family: 'VT323', monospace;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--color-accent-red);
+            margin-bottom: 2rem;
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border: var(--border-width) solid var(--color-accent-red);
+            background: #ffe3e3;
+        }
 
-    .hero-buttons {
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-        flex-wrap: wrap;
-    }
+        #hero h1 {
+            font-size: clamp(3rem, 10vw, 7rem);
+            margin-bottom: 0.5rem;
+            line-height: 0.9;
+            color: var(--color-dark-text);
+            text-shadow: 4px 4px 0 var(--color-accent-teal);
+            word-break: break-word;
+        }
 
-    /* --- 5. TIMELINE (JOURNEY) SECTION --- */
-    .timeline-wrapper {
-        max-width: 900px;
-        margin: 0 auto;
-        position: relative;
-        padding-top: 2rem;
-    }
+        #hero h3 {
+            font-size: clamp(1rem, 2.5vw, 1.8rem);
+            color: var(--color-dark-text);
+            margin-top: 1.5rem;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            letter-spacing: normal;
+        }
 
-    .timeline-wrapper::before {
-        content: '';
-        position: absolute;
-        left: 50%;
-        top: 0;
-        width: 8px;
-        height: 100%;
-        background-color: var(--color-accent-teal);
-        transform: translateX(-50%);
-        z-index: 1;
-    }
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
 
-    .timeline-item {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 3rem;
-        position: relative;
-        z-index: 2;
-    }
+        /* --- 5. TIMELINE (JOURNEY) SECTION --- */
+        .timeline-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            padding-top: 2rem;
+        }
 
-    .timeline-item:nth-child(even) {
-        flex-direction: row-reverse;
-    }
+        .timeline-wrapper::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 8px;
+            height: 100%;
+            background-color: var(--color-accent-teal);
+            transform: translateX(-50%);
+            z-index: 1;
+        }
 
-    .timeline-content {
-        width: 45%;
-        padding: 1.5rem;
-        background-color: var(--color-card-bg);
-        box-shadow: var(--border-width) var(--border-width) 0 0 var(--color-accent-red);
-    }
+        .timeline-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 2;
+        }
 
-    .timeline-dot {
-        position: absolute;
-        left: 50%;
-        top: 0.5rem;
-        transform: translateX(-50%);
-        width: 25px;
-        height: 25px;
-        background: var(--color-accent-teal);
-        border: 4px solid var(--color-dark-text); 
-        border-radius: 50%;
-        z-index: 20;
-    }
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
 
-    .timeline-year {
-        font-family: 'VT323', monospace;
-        font-size: 2.5rem;
-        color: var(--color-accent-red);
-        margin-bottom: 0.5rem;
-        letter-spacing: 0.1em;
-        text-shadow: 1px 1px 0 var(--color-dark-text);
-    }
+        .timeline-content {
+            width: 45%;
+            padding: 1.5rem;
+            background-color: var(--color-card-bg);
+            box-shadow: var(--border-width) var(--border-width) 0 0 var(--color-accent-red);
+        }
 
-    /* --- 6. PRODUCTS GRID (3x2) --- */
-    .product-grid {
-        display: grid;
-        grid-template-columns: repeat(3,1fr); 
-        /* grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));  */
-        gap: 2rem;
-    }
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 0.5rem;
+            transform: translateX(-50%);
+            width: 25px;
+            height: 25px;
+            background: var(--color-accent-teal);
+            border: 4px solid var(--color-dark-text);
+            border-radius: 50%;
+            z-index: 20;
+        }
 
-    .product-card {
-        padding: 2rem;
-        min-height: 250px;
-        border-radius: 0;
-    }
+        .timeline-year {
+            font-family: 'VT323', monospace;
+            font-size: 2.5rem;
+            color: var(--color-accent-red);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.1em;
+            text-shadow: 1px 1px 0 var(--color-dark-text);
+        }
 
-    .product-card h3 {
-        font-size: 2rem;
-        color: var(--color-accent-teal);
-        margin-bottom: 0.5rem;
-    }
+        /* --- 6. PRODUCTS GRID (3x2) --- */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            /* grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));  */
+            gap: 2rem;
+        }
 
-    .product-card strong {
-        color: var(--color-accent-red);
-    }
+        .product-card {
+            padding: 2rem;
+            min-height: 250px;
+            border-radius: 0;
+        }
 
-    .product-card ul {
-        list-style: none;
-        padding-left: 0;
-        margin-top: 1rem;
-        font-size: 1rem;
-    }
-    .product-card li { margin-bottom: 0.5rem; display: flex; align-items: flex-start; }
-    .product-card li::before {
-        content: '>>';
-        font-family: 'VT323', monospace;
-        color: var(--color-accent-red);
-        font-size: 1.2em;
-        margin-right: 0.5rem;
-        line-height: 1;
-    }
+        .product-card h3 {
+            font-size: 2rem;
+            color: var(--color-accent-teal);
+            margin-bottom: 0.5rem;
+        }
 
-    /* --- 7. CLIENT SUCCESS (Logos) --- */
-    .client-section { text-align: center; }
+        .product-card strong {
+            color: var(--color-accent-red);
+        }
 
-    .industry-list {
-        margin: 3rem auto 5rem;
-        max-width: 900px;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 1rem;
-    }
+        .product-card ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 1rem;
+            font-size: 1rem;
+        }
 
-    .industry-tag {
-        background: #EAF0F6;
-        color: var(--color-dark-text);
-        padding: 0.5rem 1.5rem;
-        border-radius: 0;
-        font-family: 'Inter', sans-serif;
-        font-weight: 700;
-        border: 2px solid var(--color-dark-text);
-    }
+        .product-card li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: flex-start;
+        }
 
-    .logo-carousel-track {
-        width: 100%;
-        height: 60px;
-        overflow: hidden;
-        position: relative;
-        display: flex;
-        align-items: center;
-        padding: 1.5rem 0;
-        background: var(--color-card-bg);
-        border-top: var(--border-width) solid var(--color-dark-text);
-        border-bottom: var(--border-width) solid var(--color-dark-text);
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) inset;
-    }
+        .product-card li::before {
+            content: '>>';
+            font-family: 'VT323', monospace;
+            color: var(--color-accent-red);
+            font-size: 1.2em;
+            margin-right: 0.5rem;
+            line-height: 1;
+        }
 
-    .logo-set {
-        display: flex;
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        align-items: center;
-    }
+        /* --- 7. CLIENT SUCCESS (Logos) --- */
+        .client-section {
+            text-align: center;
+        }
 
-    .logo-item {
-        display: inline-block;
-        flex: 0 0 auto;
-        padding: 0 20px;
-        margin-right: 4rem;
-        opacity: 0.8;
-        filter: grayscale(80%);
-    }
-    .logo-item img { height: 30px; width: auto; }
-    .logo-item:hover { opacity: 1; filter: grayscale(0%); }
+        .industry-list {
+            margin: 3rem auto 5rem;
+            max-width: 900px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
 
-    /* --- 8. ACHIEVEMENTS & COUNTERS (6 Metrics) --- */
-    .achievement-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 2rem;
-        text-align: center;
-    }
+        .industry-tag {
+            background: #EAF0F6;
+            color: var(--color-dark-text);
+            padding: 0.5rem 1.5rem;
+            border-radius: 0;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            border: 2px solid var(--color-dark-text);
+        }
 
-    .achievement-box {
-        padding: 1.5rem 1rem;
-        background: var(--color-card-bg);
-        border-bottom: 6px solid var(--color-accent-red);
-        border-radius: var(--border-radius-sm);
-        min-height: 150px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        box-shadow: 4px 4px 0 0 var(--color-dark-text);
-    }
+        .logo-carousel-track {
+            width: 100%;
+            height: 60px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 1.5rem 0;
+            background: var(--color-card-bg);
+            border-top: var(--border-width) solid var(--color-dark-text);
+            border-bottom: var(--border-width) solid var(--color-dark-text);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) inset;
+        }
 
-    .counter-value {
-        font-family: 'VT323', monospace;
-        font-size: clamp(2rem, 4vw, 3.5rem);
-        font-weight: 400;
-        color: var(--color-accent-teal); 
-        line-height: 1.1;
-        margin-bottom: 0.5rem;
-        text-shadow: 1px 1px 0 var(--color-dark-text);
-    }
+        .logo-set {
+            display: flex;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            align-items: center;
+        }
 
-    .counter-label {
-        font-size: 1rem;
-        color: var(--color-dark-text);
-        font-weight: 700;
-        letter-spacing: 0.05em;
-    }
+        .logo-item {
+            display: inline-block;
+            flex: 0 0 auto;
+            padding: 0 20px;
+            margin-right: 4rem;
+            opacity: 0.8;
+            filter: grayscale(80%);
+        }
 
-    /* --- 9. ANNIVERSARY VIDEO --- */
-    #video-section {
-        background: #EAF0F6;
-        padding: 5rem 0;
-        text-align: center;
-        border-top: var(--border-width) solid var(--color-dark-text);
-    }
+        .logo-item img {
+            height: 30px;
+            width: auto;
+        }
 
-    .video-placeholder {
-        width: 80%;
-        max-width: 900px;
-        height: 500px;
-        margin: 2rem auto 0;
-        background-color: #000;
-        border-radius: 0;
-        border: var(--border-width) solid var(--color-dark-text);
-        box-shadow: 8px 8px 0 0 var(--color-accent-red);
-        position: relative;
-        cursor: pointer;
-        transition: transform 0.3s ease;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .video-placeholder:hover {
-        transform: translate(2px, 2px);
-        box-shadow: 6px 6px 0 0 var(--color-accent-red);
-    }
-    .video-overlay-text {
-        font-size: 2rem;
-        color: var(--color-accent-teal);
-        font-family: 'VT323', monospace;
-        padding: 0.8rem 1.5rem;
-        background: var(--color-dark-text);
-        border: 2px solid var(--color-accent-teal);
-        transition: all 0.3s;
-    }
+        .logo-item:hover {
+            opacity: 1;
+            filter: grayscale(0%);
+        }
 
-    /* --- 10. CSR & CLOSING CTA --- */
-    .csr-gallery-wrapper { max-width: 1000px; margin: 0 auto; }
+        /* --- 8. ACHIEVEMENTS & COUNTERS (6 Metrics) --- */
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
 
-    .csr-gallery {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1rem;
-        margin-top: 3rem;
-    }
-    .csr-gallery img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 0;
-        border: 2px solid var(--color-dark-text);
-        box-shadow: 2px 2px 0 0 var(--color-accent-red);
-        transition: all 0.3s ease;
-    }
-    .csr-gallery img:hover {
-        box-shadow: 4px 4px 0 0 var(--color-accent-teal);
-        transform: scale(1.03);
-        z-index: 10;
-    }
-    .csr-gallery > div:nth-child(1) { grid-column: 1 / 3; grid-row: 1 / 2; aspect-ratio: 16/9; }
-    .csr-gallery > div:nth-child(2) { grid-column: 3 / 5; grid-row: 1 / 2; aspect-ratio: 16/9; }
-    .csr-gallery > div:nth-child(3) { grid-column: 1 / 2; grid-row: 2 / 3; aspect-ratio: 1/1; }
-    .csr-gallery > div:nth-child(4) { grid-column: 2 / 5; grid-row: 2 / 3; aspect-ratio: 3/1; }
+        .achievement-box {
+            padding: 1.5rem 1rem;
+            background: var(--color-card-bg);
+            border-bottom: 6px solid var(--color-accent-red);
+            border-radius: var(--border-radius-sm);
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 4px 4px 0 0 var(--color-dark-text);
+        }
 
-    /* --- 11. Responsive Media Queries --- */
-    @media (max-width: 1024px) {
-        .video-placeholder { height: 350px; }
-        .csr-gallery { grid-template-columns: repeat(2, 1fr); }
-        .csr-gallery > div:nth-child(1), .csr-gallery > div:nth-child(2), 
-        .csr-gallery > div:nth-child(3), .csr-gallery > div:nth-child(4) {
-            grid-column: auto;
-            grid-row: auto;
+        .counter-value {
+            font-family: 'VT323', monospace;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 400;
+            color: var(--color-accent-teal);
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 0 var(--color-dark-text);
+        }
+
+        .counter-label {
+            font-size: 1rem;
+            color: var(--color-dark-text);
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        /* --- 9. ANNIVERSARY VIDEO --- */
+        #video-section {
+            background: #EAF0F6;
+            padding: 5rem 0;
+            text-align: center;
+            border-top: var(--border-width) solid var(--color-dark-text);
+        }
+
+        .video-placeholder {
+            width: 80%;
+            max-width: 900px;
+            height: 500px;
+            margin: 2rem auto 0;
+            background-color: #000;
+            border-radius: 0;
+            border: var(--border-width) solid var(--color-dark-text);
+            box-shadow: 8px 8px 0 0 var(--color-accent-red);
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-placeholder:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 6px 6px 0 0 var(--color-accent-red);
+        }
+
+        .video-overlay-text {
+            font-size: 2rem;
+            color: var(--color-accent-teal);
+            font-family: 'VT323', monospace;
+            padding: 0.8rem 1.5rem;
+            background: var(--color-dark-text);
+            border: 2px solid var(--color-accent-teal);
+            transition: all 0.3s;
+        }
+
+        /* --- 10. CSR & CLOSING CTA --- */
+        .csr-gallery-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .csr-gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .csr-gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0;
+            border: 2px solid var(--color-dark-text);
+            box-shadow: 2px 2px 0 0 var(--color-accent-red);
+            transition: all 0.3s ease;
+        }
+
+        .csr-gallery img:hover {
+            box-shadow: 4px 4px 0 0 var(--color-accent-teal);
+            transform: scale(1.03);
+            z-index: 10;
+        }
+
+        .csr-gallery>div:nth-child(1) {
+            grid-column: 1 / 3;
+            grid-row: 1 / 2;
             aspect-ratio: 16/9;
         }
-    }
 
-    @media (max-width: 768px) {
-        h2 { text-shadow: 1px 1px 0 var(--color-accent-teal); font-size: clamp(1.8rem, 8vw, 3rem); margin-bottom: 2rem; }
+        .csr-gallery>div:nth-child(2) {
+            grid-column: 3 / 5;
+            grid-row: 1 / 2;
+            aspect-ratio: 16/9;
+        }
 
-        #hero h1 { font-size: clamp(3rem, 12vw, 5rem); text-shadow: 3px 3px 0 var(--color-accent-teal); }
-        #hero h3 { font-size: clamp(0.9rem, 2.5vw, 1.2rem); }
-        .hero-buttons { flex-direction: column; gap: 1rem; }
-        .hero-buttons .button-retro { width: 90%; justify-content: center; }
+        .csr-gallery>div:nth-child(3) {
+            grid-column: 1 / 2;
+            grid-row: 2 / 3;
+            aspect-ratio: 1/1;
+        }
 
-        .timeline-wrapper::before { left: 20px; transform: none; }
-        .timeline-item, .timeline-item:nth-child(even) { flex-direction: column; margin-bottom: 2rem; }
-        .timeline-content { width: 95%; padding: 1rem; margin-top: 1.5rem; }
-        .timeline-dot { left: 20px; transform: translateX(-50%); }
+        .csr-gallery>div:nth-child(4) {
+            grid-column: 2 / 5;
+            grid-row: 2 / 3;
+            aspect-ratio: 3/1;
+        }
 
-        .achievement-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-        .product-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+        /* --- 11. Responsive Media Queries --- */
+        @media (max-width: 1024px) {
+            .video-placeholder {
+                height: 350px;
+            }
 
-        .video-placeholder { width: 100%; height: 200px; }
-        .video-overlay-text { font-size: 1rem; padding: 0.5rem 1rem; }
+            .csr-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
 
-        footer { padding: 3rem 0 2rem; }
+            .csr-gallery>div:nth-child(1),
+            .csr-gallery>div:nth-child(2),
+            .csr-gallery>div:nth-child(3),
+            .csr-gallery>div:nth-child(4) {
+                grid-column: auto;
+                grid-row: auto;
+                aspect-ratio: 16/9;
+            }
+        }
 
-        /* Logo carousel adjustments */
-        .logo-carousel-track { height: 50px; }
-        .logo-item { margin-right: 2rem; padding: 0 10px; }
-        .logo-item img { height: 20px; }
-    }
+        @media (max-width: 768px) {
+            h2 {
+                text-shadow: 1px 1px 0 var(--color-accent-teal);
+                font-size: clamp(1.8rem, 8vw, 3rem);
+                margin-bottom: 2rem;
+            }
 
-    @media (max-width: 480px) {
-        h2 { font-size: clamp(1.5rem, 6vw, 2.5rem); }
-        #hero h1 { font-size: clamp(2rem, 10vw, 3.5rem); }
-        #hero h3 { font-size: clamp(0.8rem, 2.2vw, 1rem); }
-        .hero-buttons { gap: 0.5rem; }
-        .button-retro { padding: 0.5rem 1rem; font-size: 1rem; }
+            #hero h1 {
+                font-size: clamp(3rem, 12vw, 5rem);
+                text-shadow: 3px 3px 0 var(--color-accent-teal);
+            }
 
-        .timeline-content { padding: 0.5rem; margin-top: 1rem; }
-        .timeline-wrapper::before { left: 15px; }
-        .timeline-dot { left: 15px; }
+            #hero h3 {
+                font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+            }
 
-        .achievement-grid { grid-template-columns: 1fr; gap: 0.8rem; }
-        .product-grid { gap: 1rem; }
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
 
-        .video-placeholder { height: 150px; }
-        .video-overlay-text { font-size: 0.9rem; padding: 0.4rem 0.8rem; }
+            .hero-buttons .button-retro {
+                width: 90%;
+                justify-content: center;
+            }
 
-        .csr-gallery { grid-template-columns: 1fr; gap: 0.5rem; }
-        .csr-gallery > div { aspect-ratio: auto; }
+            .timeline-wrapper::before {
+                left: 20px;
+                transform: none;
+            }
 
-        /* Logo carousel adjustments */
-        .logo-carousel-track { height: 30px; }
-        .logo-item img { height: 15px; margin-right: 1rem; }
-    }
-  /* Base robot style */
-#hero > img {
-    position: absolute;
-    width: 260px;
-    pointer-events: none;
-    opacity: 0.9;
-    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.25));
-}
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                flex-direction: column;
+                margin-bottom: 2rem;
+            }
 
-/* LEFT ROBOT */
-#hero > img:nth-of-type(1) {
-    top: 20%;
-    right: 5%;
-    z-index: -1;
-    animation: floatUpDown 4s ease-in-out infinite;
-}
+            .timeline-content {
+                width: 95%;
+                padding: 1rem;
+                margin-top: 1.5rem;
+            }
 
-/* RIGHT ROBOT */
-/* #hero > img:nth-of-type(2) {
+            .timeline-dot {
+                left: 20px;
+                transform: translateX(-50%);
+            }
+
+            .achievement-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .video-placeholder {
+                width: 100%;
+                height: 200px;
+            }
+
+            .video-overlay-text {
+                font-size: 1rem;
+                padding: 0.5rem 1rem;
+            }
+
+            footer {
+                padding: 3rem 0 2rem;
+            }
+
+            /* Logo carousel adjustments */
+            .logo-carousel-track {
+                height: 50px;
+            }
+
+            .logo-item {
+                margin-right: 2rem;
+                padding: 0 10px;
+            }
+
+            .logo-item img {
+                height: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h2 {
+                font-size: clamp(1.5rem, 6vw, 2.5rem);
+            }
+
+            #hero h1 {
+                font-size: clamp(2rem, 10vw, 3.5rem);
+            }
+
+            #hero h3 {
+                font-size: clamp(0.8rem, 2.2vw, 1rem);
+            }
+
+            .hero-buttons {
+                gap: 0.5rem;
+            }
+
+            .button-retro {
+                padding: 0.5rem 1rem;
+                font-size: 1rem;
+            }
+
+            .timeline-content {
+                padding: 0.5rem;
+                margin-top: 1rem;
+            }
+
+            .timeline-wrapper::before {
+                left: 15px;
+            }
+
+            .timeline-dot {
+                left: 15px;
+            }
+
+            .achievement-grid {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
+
+            .product-grid {
+                gap: 1rem;
+            }
+
+            .video-placeholder {
+                height: 150px;
+            }
+
+            .video-overlay-text {
+                font-size: 0.9rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .csr-gallery {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+                width: 92%;
+            }
+
+            .csr-gallery>div {
+                aspect-ratio: auto;
+            }
+
+            /* Logo carousel adjustments */
+            .logo-carousel-track {
+                height: 30px;
+            }
+
+            .logo-item img {
+                height: 15px;
+                margin-right: 1rem;
+            }
+        }
+
+        /* Base robot style */
+        #hero>img {
+            position: absolute;
+            width: 260px;
+            pointer-events: none;
+            opacity: 0.9;
+            filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.25));
+        }
+
+        /* LEFT ROBOT */
+        #hero>img:nth-of-type(1) {
+            top: 20%;
+            right: 5%;
+            z-index: -1;
+            animation: floatUpDown 4s ease-in-out infinite;
+        }
+
+        /* RIGHT ROBOT */
+        /* #hero > img:nth-of-type(2) {
     top: 30%;
     right: -60px;
     width: 300px;
@@ -542,89 +717,137 @@
     animation-delay: 1s;
 } */
 
-/* SIMPLE FLOATING ANIMATION */
-@keyframes floatUpDown {
-    0%   { transform: translateY(0px); }
-    50%  { transform: translateY(-25px); }
-    100% { transform: translateY(0px); }
-}
+        /* SIMPLE FLOATING ANIMATION */
+        @keyframes floatUpDown {
+            0% {
+                transform: translateY(0px);
+            }
 
-/* MOBILE – only ONE small robot */
-@media (max-width: 768px) {
-    #hero > img:nth-of-type(2) {
-        display: none;
-    }
+            50% {
+                transform: translateY(-25px);
+            }
 
-    #hero > img:nth-of-type(1) {
-        width: 150px;
-        left: auto;
-        right: -30px;
-        top: 65%;
-        animation-duration: 3.5s;
-    }
-}
-.circle {
-    position: absolute;
-    width: 25vw;          /* responsive width */
-    height: 25vw;         /* keep it square */
-    max-width: 400px;     /* optional max size */
-    max-height: 400px;
-    border-radius: 50%;
-    border: 5px dashed tomato; /* responsive border */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    left: -15%;            /* responsive positioning */
-    top: 20%;
-  box-shadow: 0 0 20px #fffBEB, 0 0 40px #fffBEB, 0 0 60px #fffBEB, 0 0 80px #fffBEB;
-    filter: drop-shadow(0 0 10px #fffBEB);
-    animation: rotateClockwise 20s linear infinite;
-}
+            100% {
+                transform: translateY(0px);
+            }
+        }
 
-.inner-circle {
-    position: absolute;
-    width: 18vw;          /* responsive width */
-    height: 18vw;         
-    max-width: 300px;
-    max-height: 300px;
-    border-radius: 50%;
-    border: 5px dashed #00A896;
+        /* MOBILE – only ONE small robot */
+        @media (max-width: 768px) {
+            #hero>img:nth-of-type(2) {
+                display: none;
+            }
 
-    animation: rotateCounterClockwise 15s linear infinite;
-}
+            #hero>img:nth-of-type(1) {
+                width: 150px;
+                left: auto;
+                right: -30px;
+                top: 65%;
+                animation-duration: 3.5s;
+            }
+        }
 
-/* Rotation keyframes */
-@keyframes rotateClockwise {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
+        .circle {
+            position: absolute;
+            width: 25vw;
+            /* responsive width */
+            height: 25vw;
+            /* keep it square */
+            max-width: 400px;
+            /* optional max size */
+            max-height: 400px;
+            border-radius: 50%;
+            border: 5px dashed navy;
+            /* responsive border */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            left: -15%;
+            /* responsive positioning */
+            top: 20%;
+            /* box-shadow: 0 0 20px #fffBEB, 0 0 40px #fffBEB, 0 0 60px #fffBEB, 0 0 80px #fffBEB;
+    filter: drop-shadow(0 0 10px #fffBEB); */
+            animation: rotateClockwise 20s linear infinite;
+        }
 
-@keyframes rotateCounterClockwise {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(-360deg); }
-}
+        .inner-circle {
+            position: absolute;
+            width: 18vw;
+            /* responsive width */
+            height: 18vw;
+            max-width: 300px;
+            max-height: 300px;
+            border-radius: 50%;
+            border: 5px dashed tomato;
 
-/* Optional: smaller devices adjustments */
-@media (max-width: 768px) {
-    .circle {
-       display: none;
-    }
- 
-}
+            animation: rotateCounterClockwise 15s linear infinite;
+        }
 
-@media (max-width: 480px) {
-  .circle {
-       display: none;
-    }
-}
+        /* Rotation keyframes */
+        @keyframes rotateClockwise {
+            0% {
+                transform: rotate(0deg);
+            }
 
-</style>
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes rotateCounterClockwise {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(-360deg);
+            }
+        }
+
+        /* Optional: smaller devices adjustments */
+        @media (max-width: 768px) {
+            .circle {
+                display: none;
+            }
+
+        }
+
+        @media (max-width: 480px) {
+            .circle {
+                display: none;
+            }
+        }
+
+        .logoSwiper {
+            width: 100%;
+            padding: 3rem 0;
+        }
+
+        .logoSwiper .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logoSwiper img {
+            width: 140px;
+            opacity: 0.75;
+            filter: grayscale(100%);
+            transition: 0.3s ease-in-out;
+        }
+
+        .logoSwiper img:hover {
+            opacity: 1;
+            filter: grayscale(0%);
+        }
+    </style>
 
 </head>
-<body>
 
+<body>
+    <div id="lightning-container"></div>
     <!-- HERO SECTION (RETRO V3) -->
-    <section id="hero">
+    <section id="hero" class="block">
         <img src="robot.png" alt="">
         <div class="circle">
             <div class="inner-circle"></div>
@@ -633,19 +856,21 @@
         <div class="container">
             <header>
                 <span class="anniversary-label">
-                    ACCESS GRANTED: iHELPBD 13 YEAR ANNIVERSARY
+                    iHELPBD 13 YEAR ANNIVERSARY
                 </span>
-                
+
                 <h1>
                     <span class="accent-teal">13</span> YEARS OF LEGACY
                 </h1>
-                
+
                 <h3>
                     A Retrospective on Technology, Trust, and Teamwork Since 2012.
                 </h3>
-                
+
                 <p style="font-size: 1.1rem; max-width: 800px; margin: 0 auto 3rem;">
-                    [SYSTEM STATUS: ONLINE] We began with a single dialer in one room. Today, we are proud to celebrate 13 years of growth into a 10,000 sq. ft. tech hub, powering 250+ businesses across Bangladesh with our CRM, AI, and Omnichannel platforms.
+                    [SYSTEM STATUS: ONLINE] We began with a single dialer in one room. Today, we are proud to celebrate
+                    13 years of growth into a 10,000 sq. ft. tech hub, powering 250+ businesses across Bangladesh with
+                    our CRM, AI, and Omnichannel platforms.
                 </p>
 
                 <div class="hero-buttons">
@@ -666,16 +891,16 @@
             <h2>OUR <span class="accent-teal">TIMELINE</span></h2>
 
             <div class="timeline-wrapper">
-                
+
                 <div class="timeline-item">
-                    <div class="timeline-content card-base">
+                    <div class="timeline-content card-base card-time">
                         <div class="timeline-year">2012</div>
                         <p>iHelpBD founded. Initial deployment: **Dialer & IVR System v1.0**.</p>
                     </div>
                     <span class="timeline-dot"></span>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-content card-base">
+                    <div class="timeline-content card-base card-time">
                         <div class="timeline-year">2013</div>
                         <p>iHelpBD founded. Initial deployment: **Dialer & IVR System v1.0**.</p>
                     </div>
@@ -684,39 +909,42 @@
 
                 <div class="timeline-item">
                     <span class="timeline-dot"></span>
-                    <div class="timeline-content card-base">
+                    <div class="timeline-content card-base card-time">
                         <div class="timeline-year">2017</div>
                         <p>Introduced the **Ticketing System** to optimize support flow.</p>
                     </div>
                 </div>
 
                 <div class="timeline-item">
-                    <div class="timeline-content card-base">
+                    <div class="timeline-content card-base card-time">
                         <div class="timeline-year">2020</div>
-                        <p>Major infrastructure upgrade: Enabled Real-Time Communication with **WEBRTC Integration**.</p>
+                        <p>Major infrastructure upgrade: Enabled Real-Time Communication with **WEBRTC Integration**.
+                        </p>
                     </div>
                     <span class="timeline-dot"></span>
                 </div>
 
                 <div class="timeline-item">
                     <span class="timeline-dot"></span>
-                    <div class="timeline-content card-base">
+                    <div class="timeline-content card-base card-time">
                         <div class="timeline-year">2021</div>
-                        <p>Launched the comprehensive **CRM Suite**. Centralizing leads, campaigns, and reporting modules.</p>
+                        <p>Launched the comprehensive **CRM Suite**. Centralizing leads, campaigns, and reporting
+                            modules.</p>
                     </div>
                 </div>
 
                 <div class="timeline-item">
-                    <div class="timeline-content card-base">
+                    <div class="timeline-content card-base card-time">
                         <div class="timeline-year">2023</div>
-                        <p>Initiated **Omnichannel Communication** and the first layer of **AI Automation** services.</p>
+                        <p>Initiated **Omnichannel Communication** and the first layer of **AI Automation** services.
+                        </p>
                     </div>
                     <span class="timeline-dot"></span>
                 </div>
-                
+
                 <div class="timeline-item">
                     <span class="timeline-dot"></span>
-                    <div class="timeline-content card-base">
+                    <div class="timeline-content card-base card-time">
                         <div class="timeline-year">2025</div>
                         <p>New **10,000 sq.ft. Corporate Headquarters** inaugurated, marking the iHelpBD 2.0 era.</p>
                     </div>
@@ -752,7 +980,7 @@
                         <li>Click2Call Functionality</li>
                     </ul>
                 </div>
-                
+
                 <div class="product-card card-base">
                     <h3>Omnichannel</h3>
                     <p>Unified communication across voice, webchat, and social platforms.</p>
@@ -763,7 +991,7 @@
                     </ul>
                 </div>
 
-                 <div class="product-card card-base">
+                <div class="product-card card-base">
                     <h3>AI & KM System</h3>
                     <p>Knowledge Management powered by artificial intelligence.</p>
                     <ul>
@@ -775,12 +1003,12 @@
             </div>
         </div>
     </section>
-    
+
     <!-- SECTION 3 — Nationwide Client Success -->
     <section id="clients" class="client-section">
         <div class="container">
+
             <h2>CLIENT INDEX: <span class="accent-teal">250+ ENTITIES</span></h2>
-            
             <p style="font-size: 1.1rem; max-width: 800px; margin: 0 auto 3rem;">
                 Since 2012, our platforms have been successfully deployed across critical sectors nationwide.
             </p>
@@ -793,35 +1021,31 @@
                 <div class="industry-tag">GOVERNMENT</div>
                 <div class="industry-tag">EDUCATION</div>
             </div>
-            
+
             <h3 style="font-size: 1.8rem; margin-top: 4rem;">
                 STATUS: TRUST INDEX AT 100%
             </h3>
 
-            <!-- Simulated Auto-Scroll Logo Carousel -->
-           
-<div class="logo-carousel-track">
-    <div class="logo-set" id="logoSet1">
-        <span class="logo-item"><img src="https://placehold.co/120x40/FFFBEB/2C3E50?text=Bank+A" alt="Bank A Logo"></span>
-        <span class="logo-item"><img src="https://placehold.co/120x40/FFFBEB/2C3E50?text=Health+Co" alt="Health Co Logo"></span>
-        <span class="logo-item"><img src="https://placehold.co/120x40/FFFBEB/2C3E50?text=Govt+Entity" alt="Govt Entity Logo"></span>
-        <span class="logo-item"><img src="https://placehold.co/120x40/FFFBEB/2C3E50?text=Ecomm+X" alt="Ecomm X Logo"></span>
-        <span class="logo-item"><img src="https://placehold.co/120x40/FFFBEB/2C3E50?text=University" alt="University Logo"></span>
-        <span class="logo-item"><img src="https://placehold.co/120x40/FFFBEB/2C3E50?text=BPO+Partner" alt="BPO Partner Logo"></span>
-    </div>
-    <div class="logo-set" id="logoSet2">
-        <span class="logo-item"><img src="https://placehold.co/120x40/FFFBEB/2C3E50?text=Bank+A" alt="Bank A Logo"></span>
-        <span class="logo-item"><img src="https://placehold.co/120x40/FFFBEB/2C3E50?text=Health+Co" alt="Health Co Logo"></span>
-        <span class="logo-item"><img src="https://placehold.co/120x40/FFFBEB/2C3E50?text=Govt+Entity" alt="Govt Entity Logo"></span>
-        <span class="logo-item"><img src="https://placehold.co/120x40/FFFBEB/2C3E50?text=Ecomm+X" alt="Ecomm X Logo"></span>
-        <span class="logo-item"><img src="https://placehold.co/120x40/FFFBEB/2C3E50?text=University" alt="University Logo"></span>
-        <span class="logo-item"><img src="https://placehold.co/120x40/FFFBEB/2C3E50?text=BPO+Partner" alt="BPO Partner Logo"></span>
-    </div>
-    <!-- Duplicate set for seamless loop -->
-   
-</div>
+            <!-- 🔥 Swiper Logo Slider -->
+            <div class="swiper logoSwiper">
+                <div class="swiper-wrapper">
+
+                    <!-- LOGO ITEMS -->
+                    <div class="swiper-slide"><img src="https://placehold.co/150x45?text=Bank+A"></div>
+                    <div class="swiper-slide"><img src="https://placehold.co/150x45?text=Health+Co"></div>
+                    <div class="swiper-slide"><img src="https://placehold.co/150x45?text=Govt+Entity"></div>
+                    <div class="swiper-slide"><img src="https://placehold.co/150x45?text=Ecomm+X"></div>
+                    <div class="swiper-slide"><img src="https://placehold.co/150x45?text=University"></div>
+                    <div class="swiper-slide"><img src="https://placehold.co/150x45?text=BPO+Partner"></div>
+                    <div class="swiper-slide"><img src="https://placehold.co/150x45?text=FinTech"></div>
+                    <div class="swiper-slide"><img src="https://placehold.co/150x45?text=Telecom+Ltd"></div>
+
+                </div>
+            </div>
+
         </div>
     </section>
+
 
     <!-- SECTION 4 — Our Achievements at a Glance -->
     <section id="achievements">
@@ -833,7 +1057,8 @@
                 <div class="achievement-box">
                     <p class="counter-label">FACILITY SIZE</p>
                     <div class="counter-value" data-target-value="10000" data-unit=" sq. ft.">0</div>
-                    <p style="font-size: 0.9rem; color: var(--color-dark-text); margin-top: 0.5rem;">New Corporate HQ</p>
+                    <p style="font-size: 0.9rem; color: var(--color-dark-text); margin-top: 0.5rem;">New Corporate HQ
+                    </p>
                 </div>
 
                 <div class="achievement-box">
@@ -845,25 +1070,29 @@
                 <div class="achievement-box">
                     <p class="counter-label">ACTIVE CLIENTS</p>
                     <div class="counter-value" data-target-value="300" data-unit="+">0</div>
-                    <p style="font-size: 0.9rem; color: var(--color-dark-text); margin-top: 0.5rem;">Organizations Served</p>
+                    <p style="font-size: 0.9rem; color: var(--color-dark-text); margin-top: 0.5rem;">Organizations
+                        Served</p>
                 </div>
 
                 <div class="achievement-box">
                     <p class="counter-label">SYSTEM UPTIME</p>
                     <div class="counter-value" data-target-value="99.9" data-unit="%">0</div>
-                    <p style="font-size: 0.9rem; color: var(--color-dark-text); margin-top: 0.5rem;">Guaranteed Reliability</p>
+                    <p style="font-size: 0.9rem; color: var(--color-dark-text); margin-top: 0.5rem;">Guaranteed
+                        Reliability</p>
                 </div>
-                
+
                 <div class="achievement-box">
                     <p class="counter-label">AI DEPLOYMENT</p>
                     <div class="counter-value" data-target-value="2023" data-unit="">0</div>
-                    <p style="font-size: 0.9rem; color: var(--color-dark-text); margin-top: 0.5rem;">Year of KM System Launch</p>
+                    <p style="font-size: 0.9rem; color: var(--color-dark-text); margin-top: 0.5rem;">Year of KM System
+                        Launch</p>
                 </div>
 
                 <div class="achievement-box">
                     <p class="counter-label">COMMUNITY SUPPORT</p>
                     <div class="counter-value" data-target-value="10" data-unit="+">0</div>
-                    <p style="font-size: 0.9rem; color: var(--color-dark-text); margin-top: 0.5rem;">CSR Projects Completed</p>
+                    <p style="font-size: 0.9rem; color: var(--color-dark-text); margin-top: 0.5rem;">CSR Projects
+                        Completed</p>
                 </div>
 
             </div>
@@ -871,39 +1100,61 @@
     </section>
 
     <!-- SECTION 5 — Anniversary Video -->
-    <section id="video-section">
-        <div class="container">
-            <h2>VIEW <span class="accent-teal">ARCHIVED VIDEO</span> FILE</h2>
-            <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto 3rem; text-align: center;">
-                Click to play the retrospective video summarizing our 13-year journey and future plans.
-            </p>
-            <div class="video-placeholder">
-                <span class="video-overlay-text">PLAY_FILE.EXE [13 Years of iHelpBD]</span>
-            </div>
+<section id="video-section">
+    <div class="container">
+        <h2>VIEW <span class="accent-teal">ARCHIVED VIDEO</span> FILE</h2>
+        <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto 3rem; text-align: center;">
+            Click to play the retrospective video summarizing our 13-year journey and future plans.
+        </p>
+
+        <!-- Video with controls -->
+        <div class="video-wrapper" style="position: relative; max-width: 800px; margin: 0 auto;">
+            <video 
+                src="logo.mp4" 
+                controls
+                style="width: 100%; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);"
+            >
+                Your browser does not support the video tag.
+            </video>
         </div>
-    </section>
+    </div>
+</section>
+
+
 
     <!-- SECTION 6 — Celebration & CSR -->
     <section id="csr">
         <div class="container">
             <h2><span class="accent-teal">CSR</span> & COMMUNITY LOG</h2>
             <p style="font-size: 1.25rem; max-width: 800px; margin: 0 auto 3rem; text-align: center;">
-                Beyond technology, our mission includes empowering the next generation through education and skill-development initiatives.
+                Beyond technology, our mission includes empowering the next generation through education and
+                skill-development initiatives.
             </p>
 
             <div class="csr-gallery-wrapper">
                 <div class="csr-gallery">
-                    <div><img src="https://placehold.co/800x450/FFFBEB/2C3E50?text=TEAM+CELEBRATION" alt="Office Celebration 1" onerror="this.onerror=null; this.src='https://placehold.co/800x450/FFFBEB/2C3E50?text=TEAM+CELEBRATION'"></div>
-                    <div><img src="https://placehold.co/800x450/FFFBEB/2C3E50?text=STAFF+MEETING" alt="Team Event Photo" onerror="this.onerror=null; this.src='https://placehold.co/800x450/FFFBEB/2C3E50?text=STAFF+MEETING'"></div>
-                    <div><img src="https://placehold.co/400x400/FFFBEB/2C3E50?text=SKILL+PROGRAM" alt="CSR Activity" onerror="this.onerror=null; this.src='https://placehold.co/400x400/FFFBEB/2C3E50?text=SKILL+PROGRAM'"></div>
-                    <div><img src="https://placehold.co/1200x400/FFFBEB/2C3E50?text=NEW+HQ+FACILITY" alt="Client Visit Photo" onerror="this.onerror=null; this.src='https://placehold.co/1200x400/FFFBEB/2C3E50?text=NEW+HQ+FACILITY'"></div>
+                    <div><img src="https://placehold.co/800x450/FFFBEB/2C3E50?text=TEAM+CELEBRATION"
+                            alt="Office Celebration 1"
+                            onerror="this.onerror=null; this.src='https://placehold.co/800x450/FFFBEB/2C3E50?text=TEAM+CELEBRATION'">
+                    </div>
+                    <div><img src="https://placehold.co/800x450/FFFBEB/2C3E50?text=STAFF+MEETING" alt="Team Event Photo"
+                            onerror="this.onerror=null; this.src='https://placehold.co/800x450/FFFBEB/2C3E50?text=STAFF+MEETING'">
+                    </div>
+                    <div><img src="https://placehold.co/400x400/FFFBEB/2C3E50?text=SKILL+PROGRAM" alt="CSR Activity"
+                            onerror="this.onerror=null; this.src='https://placehold.co/400x400/FFFBEB/2C3E50?text=SKILL+PROGRAM'">
+                    </div>
+                    <div><img src="https://placehold.co/1200x400/FFFBEB/2C3E50?text=NEW+HQ+FACILITY"
+                            alt="Client Visit Photo"
+                            onerror="this.onerror=null; this.src='https://placehold.co/1200x400/FFFBEB/2C3E50?text=NEW+HQ+FACILITY'">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- CTA (Closing Section) -->
-    <footer id="cta" style="text-align: center; background: #EAF0F6; border-top: var(--border-width) solid var(--color-dark-text); padding: 5rem 0 3rem;">
+    <footer id="cta"
+        style="text-align: center; background: #EAF0F6; border-top: var(--border-width) solid var(--color-dark-text); padding: 5rem 0 3rem;">
         <div class="container">
             <h2 style="margin-bottom: 0.5rem; color: var(--color-dark-text); text-shadow: none;">
                 [END OF FILE] THANK YOU FOR YOUR TRUST
@@ -911,7 +1162,7 @@
             <p style="font-size: 1.5rem; max-width: 900px; margin: 0 auto 3rem;">
                 INITIATING: iHelpBD 2.0. We look forward to connecting your future.
             </p>
-            
+
             <div class="hero-buttons" style="display: flex; justify-content: center; align-items: center;">
                 <button href="#products" class="button-retro btn-teal">
                     LAUNCH PLATFORM 🚀
@@ -925,138 +1176,124 @@
             <p>:: iHELPBD V.13.0.0 (C) 2025 ALL RIGHTS RESERVED ::</p>
         </div>
     </footer>
+    <!-- GSAP + ScrollTrigger CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
 
     <script>
-        // --- Animated Counters for Achievements Section ---
-        function animateCounter(element, targetValue, isDecimal = false) {
-            const duration = 2000;
-            const startTimestamp = performance.now();
-            const unit = element.dataset.unit || '';
-            const initialValue = 0; 
-            const decimalPlaces = isDecimal ? 1 : 0;
+        gsap.registerPlugin(ScrollTrigger);
 
-            function updateCount(timestamp) {
-                const elapsed = timestamp - startTimestamp;
-                const progress = Math.min(elapsed / duration, 1);
-                
-                const easedProgress = 1 - Math.pow(1 - progress, 4); 
-                
-                let currentValue;
-                
-                if (isDecimal) {
-                    // For the 99.9% value
-                    currentValue = initialValue + easedProgress * (targetValue - initialValue);
-                    element.textContent = currentValue.toFixed(decimalPlaces).toLocaleString() + unit;
-                } 
-                else if (targetValue >= 1000) {
-                    // For large numbers like 10000, keep them rougher like old counters
-                    currentValue = Math.round(initialValue + easedProgress * (targetValue - initialValue) / 100) * 100;
-                    element.textContent = currentValue.toLocaleString() + unit;
-                } 
-                else {
-                    currentValue = Math.round(initialValue + easedProgress * (targetValue - initialValue));
-                    element.textContent = currentValue.toLocaleString() + unit;
-                }
+        const cards = document.querySelectorAll(".card-time");
 
-                if (progress < 1) {
-                    requestAnimationFrame(updateCount);
-                } else {
-                    element.textContent = targetValue.toLocaleString(undefined, { 
-                        minimumFractionDigits: decimalPlaces, 
-                        maximumFractionDigits: decimalPlaces 
-                    }) + unit;
-                }
-            }
-           
-            requestAnimationFrame(updateCount);
-        }
+        cards.forEach((card, index) => {
+            const fromLeft = index % 2 === 0; // 0 left, 1 right, 2 left, 3 right...
 
-        const counterElements = document.querySelectorAll('#achievements .counter-value[data-target-value]');
-        
-        const counterObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const element = entry.target;
-                    const valueString = element.dataset.targetValue;
-                    const isDecimal = valueString.includes('.');
-                    
-                    // Parse as float if decimal is present, otherwise integer
-                    const targetValue = isDecimal ? parseFloat(valueString) : parseInt(valueString.replace(/[^\d]/g, ''), 10); 
-                    
-                    animateCounter(element, targetValue, isDecimal);
-                    observer.unobserve(element); 
-                }
+            gsap.from(card, {
+                x: fromLeft ? -120 : 120,
+                opacity: 0,
+                duration: 1.1,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 70%",      // when 80% of viewport reaches card
+                    end: "bottom 50%",
+                    toggleActions: "play reverse play reverse"
+                    // play on scroll down
+                    // reverse on scroll up
+                },
             });
-        }, { rootMargin: '0px', threshold: 0.7 });
-
-        // Initialize observation
-        counterElements.forEach(element => {
-            const unit = element.dataset.unit || '';
-            const valueString = element.dataset.targetValue;
-            const isDecimal = valueString.includes('.');
-
-            // Set initial display value (0 or 0.0)
-            element.textContent = (isDecimal ? '0.0' : '0') + unit; 
-            counterObserver.observe(element);
         });
+    </script>
 
-        // Simple button click handler to avoid alerts
-        document.querySelector('.btn-outline').addEventListener('click', () => {
-            console.log('Contact Support button clicked.');
-            // In a real application, this would open a modal/contact form
-            document.getElementById('cta').querySelector('p').textContent = '[SYSTEM RESPONSE]: A SUPPORT AGENT WILL INITIATE CONTACT SHORTLY.';
+
+    <script>
+        const swiperLogos = new Swiper(".logoSwiper", {
+            loop: true,
+            grabCursor: false,
+            allowTouchMove: false, // no finger drag
+            slidesPerView: 5,
+            spaceBetween: 40,
+            speed: 2600,
+
+            autoplay: {
+                delay: 0,
+                disableOnInteraction: false,
+            },
+
+            breakpoints: {
+                320: { slidesPerView: 2, spaceBetween: 20 },
+                480: { slidesPerView: 3, spaceBetween: 30 },
+                768: { slidesPerView: 4, spaceBetween: 30 },
+                1024: { slidesPerView: 5, spaceBetween: 40 },
+            },
         });
-document.addEventListener('DOMContentLoaded', function () {
-    const set1 = document.getElementById('logoSet1');
-    const set2 = document.getElementById('logoSet2');
-    
-    // Duplicate logos from set1 into set2
-    set2.innerHTML = set1.innerHTML;
+    </script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.1/ScrollTrigger.min.js"></script> -->
+<script>
+function animateCounter(element, targetValue, isDecimal = false) {
+    const duration = 2000; // 2 seconds
+    const startTimestamp = performance.now();
+    const unit = element.dataset.unit || '';
+    const initialValue = 0; 
+    const decimalPlaces = isDecimal ? 1 : 0;
 
-    let x = 0;
-    const speed = 1; // pixels per frame
+    function updateCount(timestamp) {
+        const elapsed = timestamp - startTimestamp;
+        const progress = Math.min(elapsed / duration, 1);
+        const easedProgress = 1 - Math.pow(1 - progress, 4); // easeOutQuart
 
-    function animateLogos() {
-        x -= speed;
-        const width = set1.offsetWidth;
+        let currentValue;
 
-        // When first set is completely left, reset position
-        if (Math.abs(x) >= width) {
-            x = 0;
+        if (isDecimal) {
+            currentValue = initialValue + easedProgress * (targetValue - initialValue);
+            element.textContent = currentValue.toFixed(decimalPlaces) + unit;
+        } else if (targetValue >= 1000) {
+            currentValue = Math.round(initialValue + easedProgress * (targetValue - initialValue) / 100) * 100;
+            element.textContent = currentValue.toLocaleString() + unit;
+        } else {
+            currentValue = Math.round(initialValue + easedProgress * (targetValue - initialValue));
+            element.textContent = currentValue + unit;
         }
 
-        set1.style.transform = `translateX(${x}px)`;
-        set2.style.transform = `translateX(${x + width}px)`;
-
-        requestAnimationFrame(animateLogos);
+        if (progress < 1) {
+            requestAnimationFrame(updateCount);
+        } else {
+            element.textContent = targetValue.toLocaleString(undefined, { 
+                minimumFractionDigits: decimalPlaces, 
+                maximumFractionDigits: decimalPlaces 
+            }) + unit;
+        }
     }
 
-    animateLogos();
+    requestAnimationFrame(updateCount);
+}
+
+// Select all achievement counters
+const counterElements = document.querySelectorAll('#achievements .counter-value[data-target-value]');
+
+const counterObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const element = entry.target;
+            const valueString = element.dataset.targetValue;
+            const isDecimal = valueString.includes('.');
+            const targetValue = isDecimal ? parseFloat(valueString) : parseInt(valueString.replace(/[^\d]/g, ''), 10); 
+            
+            animateCounter(element, targetValue, isDecimal);
+            observer.unobserve(element);
+        }
+    });
+}, { rootMargin: '0px', threshold: 0.7 });
+
+// Initialize counters
+counterElements.forEach(element => {
+    const valueString = element.dataset.targetValue;
+    const isDecimal = valueString.includes('.');
+    element.textContent = (isDecimal ? '0.0' : '0') + (element.dataset.unit || '');
+    counterObserver.observe(element);
 });
-document.addEventListener('DOMContentLoaded', () => {
-    const scrollElements = document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right');
+</script>
 
-    const elementInView = (el, offset = 0) => {
-        const elementTop = el.getBoundingClientRect().top;
-        return elementTop <= (window.innerHeight || document.documentElement.clientHeight) - offset;
-    };
-
-    const displayScrollElement = (el) => {
-        el.classList.add('visible');
-    };
-
-    const handleScrollAnimation = () => {
-        scrollElements.forEach(el => {
-            if (elementInView(el, 100)) {
-                displayScrollElement(el);
-            }
-        });
-    };
-
-    window.addEventListener('scroll', handleScrollAnimation);
-    // Trigger animation on load for elements already in view
-    handleScrollAnimation();
-});
-    </script>
 </body>
+
 </html>
